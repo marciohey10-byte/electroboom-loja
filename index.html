@@ -3,54 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElectroBoom - Produtos em Oferta</title>
+  <title>Loja ElectroBoom - Estilo Shopify</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
-    header { background: #111; color: #fff; padding: 20px; text-align: center; }
-    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
-    .produto { background: #fff; border-radius: 10px; box-shadow: 0 0 10px #ccc; padding: 15px; text-align: center; }
-    .produto img { max-width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
-    .produto h2 { font-size: 18px; margin: 10px 0; }
-    .preco { font-size: 16px; color: green; font-weight: bold; }
-    .botao { background: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-    .botao:hover { background: #218838; }
-    footer { background: #111; color: #fff; text-align: center; padding: 10px; margin-top: 30px; }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f5f5f5; }
+    header { background: #111; color: #fff; padding: 30px 10px; text-align: center; }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; padding: 20px; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: #333;
+    }
+    .preco { color: #28a745; font-weight: bold; margin-bottom: 10px; }
+    .botao {
+      background: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🛒 ElectroBoom - Super Ofertas!</h1>
-    <p>Compre pelo WhatsApp com pagamento na entrega</p>
+    <h1>🛒 ElectroBoom Store</h1>
+    <p>Os 20 produtos virais mais vendidos no WhatsApp!</p>
   </header>
 
- <div class="container">
-  <div class="produto">
-    <img src="https://i.imgur.com/k2AjBAh.png" alt="Fone Bluetooth Gamer">
-    <h2>Fone Bluetooth Gamer RGB</h2>
-    <p class="preco">R$ 89,90</p>
-    <a href="https://wa.me/5599999999999?text=Quero+comprar+o+Fone+Bluetooth+Gamer" class="botao">Comprar no WhatsApp</a>
+  <div class="container">
+    <!-- PRODUTOS VENCEDORES - 20 UNIDADES -->
+    <div class="card"><img src="fone.jpg" alt="Fone Gamer"><h3>Fone Bluetooth Gamer RGB</h3><p class="preco">R$ 89,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="projetor.jpg" alt="Projetor"><h3>Mini Projetor Portátil Full HD</h3><p class="preco">R$ 289,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="smartwatch.jpg" alt="Relógio"><h3>Smartwatch Fitness à Prova D'Água</h3><p class="preco">R$ 119,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="camera.jpg" alt="Câmera IP"><h3>Câmera IP Wi-Fi 360° Noturna</h3><p class="preco">R$ 99,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="anel.jpg" alt="Anel"><h3>Anel Masculino Viking Aço Inoxidável</h3><p class="preco">R$ 39,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="cortador.jpg" alt="Cortador de Legumes"><h3>Cortador Multifuncional 9 em 1</h3><p class="preco">R$ 59,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="kit-barba.jpg" alt="Kit Barba"><h3>Kit Barba Premium - Óleo + Pente + Balm</h3><p class="preco">R$ 89,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="trena.jpg" alt="Trena Digital"><h3>Trena Digital a Laser 40m</h3><p class="preco">R$ 119,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="tenis.jpg" alt="Tênis Masculino"><h3>Tênis Masculino Leve Antiderrapante</h3><p class="preco">R$ 149,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="depilador.jpg" alt="Depilador">
+      <h3>Depilador Elétrico Portátil Indolor</h3><p class="preco">R$ 89,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="tira-rugas.jpg" alt="Tira Rugas"><h3>Caneta Tira Rugas Plasma Pen</h3><p class="preco">R$ 159,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="escova.jpg" alt="Escova Alisadora"><h3>Escova Alisadora 2 em 1 com Íons</h3><p class="preco">R$ 139,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="massageador.jpg" alt="Massageador"><h3>Massageador Cervical Shiatsu Infravermelho</h3><p class="preco">R$ 169,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="relogio-luxo.jpg" alt="Relógio Luxo"><h3>Relógio Masculino de Luxo à Prova D'Água</h3><p class="preco">R$ 199,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="tablet.jpg" alt="Tablet"><h3>Tablet Android 10.1'' + Capa e Teclado</h3><p class="preco">R$ 399,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="caixa-som.jpg" alt="Caixa de Som"><h3>Caixa de Som Bluetooth RGB 20W</h3><p class="preco">R$ 149,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="lampada-camera.jpg" alt="Lâmpada Câmera"><h3>Lâmpada com Câmera Espiã 360º</h3><p class="preco">R$ 89,00</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="mochila.jpg" alt="Mochila Antifurto"><h3>Mochila Antifurto USB com Fecho Invisível</h3><p class="preco">R$ 129,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="aspirador.jpg" alt="Mini Aspirador"><h3>Mini Aspirador de Pó Portátil Sem Fio</h3><p class="preco">R$ 149,90</p><a class="botao" href="#">Comprar</a></div>
+    <div class="card"><img src="travesseiro.jpg" alt="Travesseiro Cervical"><h3>Travesseiro Ortopédico Cervical de Espuma NASA</h3><p class="preco">R$ 119,90</p><a class="botao" href="#">Comprar</a></div>
   </div>
 
-  <div class="produto">
-    <img src="https://i.imgur.com/HehY4GA.png" alt="Mini Projetor Portátil">
-    <h2>Mini Projetor Portátil</h2>
-    <p class="preco">R$ 289,00</p>
-    <a href="https://wa.me/5599999999999?text=Quero+comprar+o+Mini+Projetor" class="botao">Comprar no WhatsApp</a>
-  </div>
-
-  <div class="produto">
-    <img src="https://i.imgur.com/Ot4hKxW.png" alt="Smartwatch Fitness">
-    <h2>Smartwatch Fitness à Prova D'Água</h2>
-    <p class="preco">R$ 119,90</p>
-    <a href="https://wa.me/5599999999999?text=Quero+comprar+o+Smartwatch" class="botao">Comprar no WhatsApp</a>
-  </div>
-
-  <div class="produto">
-    <img src="https://i.imgur.com/FDpMbXx.png" alt="Câmera IP Wi-Fi 360°">
-    <h2>Câmera IP Wi-Fi 360°</h2>
-    <p class="preco">R$ 99,00</p>
-    <a href="https://wa.me/5599999999999?text=Quero+comprar+a+C%C3%A2mera+IP+Wi-Fi" class="botao">Comprar no WhatsApp</a>
-  </div>
-</div>
-
-
+  <footer>
+    <p>ElectroBoom Store © 2025 - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
