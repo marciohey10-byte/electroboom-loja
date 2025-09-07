@@ -1,87 +1,321 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja ElectroBoom - Estilo Shopify</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Electroboom — Loja</title>
+  <!-- Tailwind via CDN (funciona no GitHub Pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f5f5f5; }
-    header { background: #111; color: #fff; padding: 30px 10px; text-align: center; }
-    header h1 { margin: 0; font-size: 2.5rem; }
-    .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; padding: 20px; }
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s ease-in-out;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card h3 {
-      font-size: 1rem;
-      margin: 10px 0;
-      color: #333;
-    }
-    .preco { color: #28a745; font-weight: bold; margin-bottom: 10px; }
-    .botao {
-      background: #28a745;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-bottom: 15px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-    }
+    :root{ --brand:#0ea5e9; --ink:#0b1220 }
+    html,body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial}
+    .glass{backdrop-filter:saturate(1.5) blur(8px); background:rgba(255,255,255,.75)}
+    .shimmer{position:relative;overflow:hidden}
+    .shimmer::after{content:"";position:absolute;inset:-200%;background:linear-gradient(110deg,transparent 45%,rgba(255,255,255,.55) 50%,transparent 55%);animation:shine 1.6s infinite}
+    @keyframes shine{to{transform:translateX(50%)}}
   </style>
+  <!-- Pixel placeholder (cole seu ID) -->
+  <script>
+    // Substitua pelo seu Pixel quando for anunciar
+    // ! Importante: no GitHub Pages, scripts de terceiros funcionam normalmente.
+    // ;(function(){ /* window.fbq = ... */ })()
+  </script>
 </head>
-<body>
-  <header>
-    <h1>🛒 ElectroBoom Store</h1>
-    <p>Os 20 produtos virais mais vendidos no WhatsApp!</p>
+<body class="bg-slate-50 text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:glass">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-2xl bg-sky-500 grid place-content-center text-white font-black">EB</div>
+        <span class="font-extrabold tracking-tight text-xl">Electroboom</span>
+      </div>
+      <div class="hidden md:flex items-center gap-2 w-1/2">
+        <input id="search" type="search" placeholder="Buscar produtos..." class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-sky-400" />
+        <select id="category" class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-sky-400">
+          <option value="">Todas</option>
+          <option>Smartphones</option>
+          <option>Áudio</option>
+          <option>Gaming</option>
+          <option>Casa Inteligente</option>
+          <option>Bem-estar</option>
+          <option>Acessórios</option>
+        </select>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="openCartBtn" class="relative rounded-xl border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
+          🛒 <span>Carrinho</span>
+          <span id="cartCount" class="absolute -right-2 -top-2 min-w-[22px] h-[22px] rounded-full bg-sky-600 text-white text-xs grid place-content-center">0</span>
+        </button>
+        <a href="#whatsapp" class="hidden md:inline-block rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700">Falar no WhatsApp</a>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <!-- PRODUTOS VENCEDORES - 20 UNIDADES -->
-    <div class="card"><img src="fone.jpg" alt="Fone Gamer"><h3>Fone Bluetooth Gamer RGB</h3><p class="preco">R$ 89,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="projetor.jpg" alt="Projetor"><h3>Mini Projetor Portátil Full HD</h3><p class="preco">R$ 289,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="smartwatch.jpg" alt="Relógio"><h3>Smartwatch Fitness à Prova D'Água</h3><p class="preco">R$ 119,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="camera.jpg" alt="Câmera IP"><h3>Câmera IP Wi-Fi 360° Noturna</h3><p class="preco">R$ 99,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="anel.jpg" alt="Anel"><h3>Anel Masculino Viking Aço Inoxidável</h3><p class="preco">R$ 39,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="cortador.jpg" alt="Cortador de Legumes"><h3>Cortador Multifuncional 9 em 1</h3><p class="preco">R$ 59,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="kit-barba.jpg" alt="Kit Barba"><h3>Kit Barba Premium - Óleo + Pente + Balm</h3><p class="preco">R$ 89,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="trena.jpg" alt="Trena Digital"><h3>Trena Digital a Laser 40m</h3><p class="preco">R$ 119,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="tenis.jpg" alt="Tênis Masculino"><h3>Tênis Masculino Leve Antiderrapante</h3><p class="preco">R$ 149,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="depilador.jpg" alt="Depilador">
-      <h3>Depilador Elétrico Portátil Indolor</h3><p class="preco">R$ 89,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="tira-rugas.jpg" alt="Tira Rugas"><h3>Caneta Tira Rugas Plasma Pen</h3><p class="preco">R$ 159,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="escova.jpg" alt="Escova Alisadora"><h3>Escova Alisadora 2 em 1 com Íons</h3><p class="preco">R$ 139,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="massageador.jpg" alt="Massageador"><h3>Massageador Cervical Shiatsu Infravermelho</h3><p class="preco">R$ 169,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="relogio-luxo.jpg" alt="Relógio Luxo"><h3>Relógio Masculino de Luxo à Prova D'Água</h3><p class="preco">R$ 199,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="tablet.jpg" alt="Tablet"><h3>Tablet Android 10.1'' + Capa e Teclado</h3><p class="preco">R$ 399,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="caixa-som.jpg" alt="Caixa de Som"><h3>Caixa de Som Bluetooth RGB 20W</h3><p class="preco">R$ 149,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="lampada-camera.jpg" alt="Lâmpada Câmera"><h3>Lâmpada com Câmera Espiã 360º</h3><p class="preco">R$ 89,00</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="mochila.jpg" alt="Mochila Antifurto"><h3>Mochila Antifurto USB com Fecho Invisível</h3><p class="preco">R$ 129,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="aspirador.jpg" alt="Mini Aspirador"><h3>Mini Aspirador de Pó Portátil Sem Fio</h3><p class="preco">R$ 149,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-    <div class="card"><img src="travesseiro.jpg" alt="Travesseiro Cervical"><h3>Travesseiro Ortopédico Cervical de Espuma NASA</h3><p class="preco">R$ 119,90</p><a class="botao" href=\"https://pay.hotmart.com/YOUR-CHECKOUT-ID\" target=\"_blank\">Comprar</a></div>
-  </div>
+  <!-- Hero -->
+  <section class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14 grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <h1 class="text-3xl lg:text-5xl font-black leading-tight">Produtos vencedores, preço justo e checkout direto no WhatsApp.</h1>
+        <p class="mt-4 text-slate-600 max-w-prose">Template leve, estilo Shopify, pronto para GitHub Pages. Edite as imagens em <code>/assets/</code>, personalize preços e publique.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#catalogo" class="rounded-xl bg-sky-600 px-5 py-3 text-white font-semibold hover:bg-sky-700">Ver catálogo</a>
+          <a href="https://wa.me/5500000000000" target="_blank" class="rounded-xl border border-slate-300 px-5 py-3 font-semibold hover:bg-slate-100">WhatsApp</a>
+        </div>
+        <ul class="mt-6 grid grid-cols-2 gap-3 text-sm text-slate-600">
+          <li>✔️ Publica no GitHub Pages</li>
+          <li>✔️ Pixel pronto</li>
+          <li>✔️ Carrinho + WhatsApp</li>
+          <li>✔️ Busca e filtros</li>
+        </ul>
+      </div>
+      <div class="relative">
+        <div class="aspect-[16/10] w-full rounded-2xl bg-gradient-to-br from-sky-50 to-white border border-slate-200 p-4">
+          <div class="h-full w-full rounded-xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+            <div class="h-8 border-b border-slate-200 bg-slate-50"></div>
+            <div class="p-6 grid sm:grid-cols-3 gap-4 shimmer">
+              <div class="h-28 rounded-xl bg-slate-100"></div>
+              <div class="h-28 rounded-xl bg-slate-100"></div>
+              <div class="h-28 rounded-xl bg-slate-100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>ElectroBoom Store © 2025 - Todos os direitos reservados</p>
+  <!-- Badges -->
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-2">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-slate-600">
+      <span class="px-2 py-1 rounded-full bg-slate-100">Envio rápido</span>
+      <span class="px-2 py-1 rounded-full bg-slate-100">Garantia 7 dias</span>
+      <span class="px-2 py-1 rounded-full bg-slate-100">Suporte WhatsApp</span>
+      <span class="px-2 py-1 rounded-full bg-slate-100">Pagamento na entrega (opcional)</span>
+    </div>
+  </section>
+
+  <!-- Catalogo -->
+  <section id="catalogo" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-2xl font-extrabold">Catálogo</h2>
+      <div class="text-sm text-slate-600"><span id="countFiltered">20</span> produtos</div>
+    </div>
+
+    <!-- Grid -->
+    <div id="grid" class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-white border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-xl font-bold">Precisa de ajuda para escolher?</h3>
+        <p class="text-slate-600">Chame no WhatsApp e receba recomendações em minutos.</p>
+      </div>
+      <a id="whatsapp" href="https://wa.me/5500000000000" target="_blank" class="rounded-xl bg-emerald-600 px-6 py-3 text-white font-semibold hover:bg-emerald-700">Atendimento agora</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <p>© <span id="year"></span> Electroboom. Todos os direitos reservados.</p>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-slate-800">Política de Privacidade</a>
+          <a href="#" class="hover:text-slate-800">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
   </footer>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[420px] bg-white shadow-2xl border-l border-slate-200 translate-x-full transition-transform duration-300 z-50 flex flex-col">
+    <div class="p-4 border-b border-slate-200 flex items-center justify-between">
+      <h4 class="text-lg font-bold">Seu carrinho</h4>
+      <button id="closeCartBtn" class="rounded-lg px-3 py-2 border border-slate-300 hover:bg-slate-100">Fechar</button>
+    </div>
+    <div id="cartItems" class="flex-1 overflow-auto p-4 space-y-4"></div>
+    <div class="p-4 border-t border-slate-200">
+      <div class="flex items-center justify-between font-semibold mb-3">
+        <span>Total</span>
+        <span id="cartTotal">R$ 0,00</span>
+      </div>
+      <button id="checkoutBtn" class="w-full rounded-xl bg-sky-600 text-white font-semibold px-5 py-3 hover:bg-sky-700">Finalizar pelo WhatsApp</button>
+    </div>
+  </div>
+  <div id="overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity z-40"></div>
+
+  <script>
+    // ========= CONFIG =========
+    const WHATSAPP_NUMBER = '5500000000000'; // Substitua pelo seu número com DDI+DDD, ex: 55 13 99999-9999 => 5513999999999
+
+    // 20 produtos vencedores (troque imagens por /assets/xxx.jpg ou links https válidos)
+    const PRODUCTS = [
+      { id:1,  title:'Fone Bluetooth Pro ANC', category:'Áudio', price:199.90, compare_at:299.90, image:'assets/prod1.jpg', badge:'Top 1' },
+      { id:2,  title:'Smartwatch Fitness Max', category:'Bem-estar', price:179.90, compare_at:249.90, image:'assets/prod2.jpg', badge:'Hit' },
+      { id:3,  title:'Caixa de Som 30W', category:'Áudio', price:149.90, compare_at:219.90, image:'assets/prod3.jpg' },
+      { id:4,  title:'Lâmpada Wi‑Fi RGB', category:'Casa Inteligente', price:59.90, compare_at:89.90, image:'assets/prod4.jpg' },
+      { id:5,  title:'Câmera Wi‑Fi 1080p', category:'Casa Inteligente', price:129.90, compare_at:189.90, image:'assets/prod5.jpg' },
+      { id:6,  title:'Carregador 65W GaN', category:'Acessórios', price:119.90, compare_at:159.90, image:'assets/prod6.jpg' },
+      { id:7,  title:'Mouse Gamer 8K DPI', category:'Gaming', price:89.90, compare_at:129.90, image:'assets/prod7.jpg' },
+      { id:8,  title:'Teclado Mecânico RGB', category:'Gaming', price:229.90, compare_at:319.90, image:'assets/prod8.jpg', badge:'Mais vendido' },
+      { id:9,  title:'Suporte Articulado', category:'Acessórios', price:79.90, compare_at:119.90, image:'assets/prod9.jpg' },
+      { id:10, title:'Headset Surround 7.1', category:'Gaming', price:199.90, compare_at:279.90, image:'assets/prod10.jpg' },
+      { id:11, title:'Cabo USB‑C 100W', category:'Acessórios', price:39.90, compare_at:59.90, image:'assets/prod11.jpg' },
+      { id:12, title:'Power Bank 20.000 mAh', category:'Acessórios', price:159.90, compare_at:219.90, image:'assets/prod12.jpg' },
+      { id:13, title:'Projetor Portátil HD', category:'Casa Inteligente', price:499.90, compare_at:699.90, image:'assets/prod13.jpg' },
+      { id:14, title:'Trena a Laser', category:'Casa Inteligente', price:139.90, compare_at:199.90, image:'assets/prod14.jpg' },
+      { id:15, title:'Mini Aspirador USB', category:'Casa Inteligente', price:89.90, compare_at:129.90, image:'assets/prod15.jpg' },
+      { id:16, title:'Cafeteira Portátil', category:'Casa Inteligente', price:169.90, compare_at:239.90, image:'assets/prod16.jpg' },
+      { id:17, title:'Pulseira Massager', category:'Bem-estar', price:139.90, compare_at:199.90, image:'assets/prod17.jpg' },
+      { id:18, title:'Garrafa Térmica 1L', category:'Bem-estar', price:79.90, compare_at:119.90, image:'assets/prod18.jpg' },
+      { id:19, title:'Suporte Celular Veicular', category:'Acessórios', price:49.90, compare_at:79.90, image:'assets/prod19.jpg' },
+      { id:20, title:'Ring Light 12"', category:'Acessórios', price:129.90, compare_at:189.90, image:'assets/prod20.jpg' },
+    ];
+
+    const state = { query:'', category:'', cart:[] };
+
+    const grid = document.getElementById('grid');
+    const search = document.getElementById('search');
+    const category = document.getElementById('category');
+    const countFiltered = document.getElementById('countFiltered');
+
+    function money(v){
+      return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+    }
+
+    function filterProducts(){
+      const q = state.query.toLowerCase();
+      return PRODUCTS.filter(p => {
+        const okQ = !q || p.title.toLowerCase().includes(q)
+        const okC = !state.category || p.category === state.category
+        return okQ && okC
+      })
+    }
+
+    function renderProducts(){
+      const items = filterProducts();
+      countFiltered.textContent = items.length
+      grid.innerHTML = items.map(p => `
+        <article class="group rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md transition-shadow">
+          <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+            <img src="${p.image}" alt="${p.title}" class="h-full w-full object-cover group-hover:scale-[1.03] transition-transform" onerror="this.src='https://picsum.photos/seed/${p.id}/600/450'" />
+          </div>
+          <div class="p-4">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="font-semibold leading-snug">${p.title}</h3>
+              ${p.badge ? `<span class='text-[10px] px-2 py-1 rounded-full bg-amber-100 text-amber-800'>${p.badge}</span>` : ''}
+            </div>
+            <p class="mt-1 text-xs text-slate-500">${p.category}</p>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-lg font-extrabold text-slate-900">${money(p.price)}</span>
+              <span class="text-sm text-slate-400 line-through">${money(p.compare_at)}</span>
+            </div>
+            <div class="mt-4 flex gap-2">
+              <button class="w-full rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-800" onclick='addToCart(${JSON.stringify(p.id)})'>Adicionar</button>
+              <a href="#whatsapp" class="rounded-xl border border-slate-300 px-4 py-2 text-sm hover:bg-slate-100">Dúvidas</a>
+            </div>
+          </div>
+        </article>
+      `).join('')
+    }
+
+    // Cart
+    const cartDrawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('overlay');
+    const openCartBtn = document.getElementById('openCartBtn');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartCount = document.getElementById('cartCount');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    function openCart(){
+      cartDrawer.classList.remove('translate-x-full');
+      overlay.classList.remove('pointer-events-none');
+      overlay.classList.add('opacity-100');
+    }
+    function closeCart(){
+      cartDrawer.classList.add('translate-x-full');
+      overlay.classList.add('pointer-events-none');
+      overlay.classList.remove('opacity-100');
+    }
+
+    function addToCart(id){
+      const item = PRODUCTS.find(p=>p.id===id);
+      const found = state.cart.find(i=>i.id===id);
+      if(found){ found.qty++; } else { state.cart.push({...item, qty:1}); }
+      renderCart();
+      openCart();
+    }
+    function removeFromCart(id){
+      state.cart = state.cart.filter(i=>i.id!==id);
+      renderCart();
+    }
+    function changeQty(id,delta){
+      const it = state.cart.find(i=>i.id===id);
+      if(!it) return;
+      it.qty += delta;
+      if(it.qty<=0){ removeFromCart(id); return; }
+      renderCart();
+    }
+    function getTotal(){
+      return state.cart.reduce((s,i)=> s + i.price*i.qty, 0)
+    }
+    function renderCart(){
+      cartItems.innerHTML = state.cart.length ? state.cart.map(i=>`
+        <div class="flex gap-3">
+          <img src="${i.image}" alt="${i.title}" class="h-16 w-16 rounded-lg object-cover border border-slate-200" onerror="this.src='https://picsum.photos/seed/${i.id}/200'"/>
+          <div class="flex-1">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <p class="font-semibold leading-tight">${i.title}</p>
+                <p class="text-xs text-slate-500">${i.category}</p>
+              </div>
+              <button class="text-slate-400 hover:text-slate-700" onclick="removeFromCart(${i.id})">✕</button>
+            </div>
+            <div class="mt-2 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <button class="rounded-lg border px-2" onclick="changeQty(${i.id},-1)">-</button>
+                <span class="min-w-[24px] text-center">${i.qty}</span>
+                <button class="rounded-lg border px-2" onclick="changeQty(${i.id},+1)">+</button>
+              </div>
+              <div class="font-semibold">${money(i.price*i.qty)}</div>
+            </div>
+          </div>
+        </div>
+      `).join('') : '<p class="text-sm text-slate-600">Seu carrinho está vazio.</p>'
+      const total = getTotal();
+      cartTotal.textContent = money(total);
+      cartCount.textContent = state.cart.reduce((s,i)=>s+i.qty,0);
+    }
+
+    function checkoutWhatsApp(){
+      if(!state.cart.length){ openCart(); return; }
+      const lines = state.cart.map(i=>`• ${i.title} x${i.qty} — ${money(i.price*i.qty)}`).join('%0A');
+      const total = money(getTotal());
+      const msg = encodeURIComponent(`Olá! Quero finalizar meu pedido:%0A${lines}%0A%0ATotal: ${total}`);
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      window.open(url,'_blank');
+    }
+
+    // Events
+    document.getElementById('year').textContent = new Date().getFullYear();
+    search?.addEventListener('input', (e)=>{ state.query = e.target.value; renderProducts(); })
+    category?.addEventListener('change', (e)=>{ state.category = e.target.value; renderProducts(); })
+    openCartBtn?.addEventListener('click', openCart)
+    closeCartBtn?.addEventListener('click', closeCart)
+    overlay?.addEventListener('click', closeCart)
+    checkoutBtn?.addEventListener('click', checkoutWhatsApp)
+
+    // Init
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
+
+
