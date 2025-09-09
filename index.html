@@ -1,190 +1,145 @@
-<!DOCTYPE html>
-<html lang="es">
+  <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Electroboom — Tienda</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Despertar Estelar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial}
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
-      z-index: 1000;
-      transition: transform .2s ease;
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
-    .whatsapp-float:hover { transform: scale(1.1); }
+    body {
+      background: #f9f9f9;
+      color: #222;
+    }
+    header {
+      background: linear-gradient(120deg, #4e00c2, #2d91d3);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.8rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .benefit {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .benefit h3 {
+      margin-bottom: 10px;
+      color: #4e00c2;
+    }
+    .video {
+      text-align: center;
+      margin: 50px 0;
+    }
+    iframe {
+      width: 100%;
+      max-width: 720px;
+      height: 400px;
+      border-radius: 12px;
+      border: none;
+    }
+    .cta {
+      background: #2d91d3;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .cta a {
+      background: white;
+      color: #2d91d3;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .cta a:hover {
+      background: #f0f0f0;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .cta h2 {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <!-- Banner superior -->
-  <div class="bg-emerald-600 text-white text-sm text-center py-2 font-medium">
-    🚚 Envíos a todo Colombia | Pago contra entrega
-  </div>
+<body>
 
-  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/80 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-2xl bg-sky-500 grid place-content-center text-white font-black">EB</div>
-        <span class="font-extrabold tracking-tight text-xl">Electroboom</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <button id="openCartBtn" class="relative rounded-xl border border-slate-300 px-3 py-2 text-sm hover:bg-slate-100">
-          🛒 <span>Carrito</span>
-          <span id="cartCount" class="absolute -right-2 -top-2 min-w-[22px] h-[22px] rounded-full bg-sky-600 text-white text-xs grid place-content-center">0</span>
-        </button>
-        <a href="#whatsapp" class="hidden md:inline-block rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-700">WhatsApp</a>
-      </div>
-    </div>
+  <header>
+    <h1>Despertar Estelar</h1>
+    <p>Ative sua missão espiritual e manifeste sua essência cósmica no plano terreno</p>
   </header>
 
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-    <h1 class="text-3xl lg:text-5xl font-black leading-tight">Ofertas ganadoras con <span class="text-sky-600">pago contra entrega</span>.</h1>
-    <p class="mt-4 text-slate-600 max-w-prose">Plantilla ligera estilo Shopify, lista para GitHub Pages. Edite imágenes en <code>/assets/</code> y publique.</p>
-    <a href="#catalogo" class="mt-6 inline-block rounded-xl bg-sky-600 px-5 py-3 text-white font-semibold hover:bg-sky-700">Ver catálogo</a>
-  </section>
+  <div class="container">
 
-  <section id="catalogo" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-    <h2 class="text-2xl font-extrabold mb-6">Catálogo</h2>
-    <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
-  </section>
+    <section class="benefits">
+      <div class="benefit">
+        <h3>🌌 Conexão com o Alto</h3>
+        <p>Reconecte-se com sua origem estelar e acesse sabedorias esquecidas através de práticas guiadas.</p>
+      </div>
+      <div class="benefit">
+        <h3>✨ Ferramentas de Ativação</h3>
+        <p>E-books, áudios, rituais e práticas canalizadas para despertar dons e reprogramar sua vibração.</p>
+      </div>
+      <div class="benefit">
+        <h3>🚀 Evolução com Propósito</h3>
+        <p>Desperte com consciência, compartilhe sua luz e transforme vidas com sua presença digital.</p>
+      </div>
+    </section>
 
-  <footer class="py-10 border-t border-slate-200">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex justify-between">
-      <p>© <span id="year"></span> Electroboom. Todos los derechos reservados.</p>
-      <span>Soporte vía WhatsApp</span>
-    </div>
+    <section class="video">
+      <h2>Assista à mensagem da Confederação Estelar</h2>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    </section>
+
+    <section class="cta">
+      <h2>Está pronto para despertar?</h2>
+      <p><a href="#">Iniciar Jornada</a></p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2025 Despertar Estelar · Alinhado com a Fonte · Todos os direitos reservados
   </footer>
 
-  <!-- Drawer Carrito -->
-  <div id="cartDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[420px] bg-white shadow-2xl border-l border-slate-200 translate-x-full transition-transform duration-300 z-50 flex flex-col">
-    <div class="p-4 border-b border-slate-200 flex items-center justify-between">
-      <h4 class="text-lg font-bold">Tu carrito</h4>
-      <button id="closeCartBtn" class="rounded-lg px-3 py-2 border border-slate-300 hover:bg-slate-100">Cerrar</button>
-    </div>
-    <div id="cartItems" class="flex-1 overflow-auto p-4 space-y-4"></div>
-    <div class="p-4 border-t border-slate-200">
-      <div class="flex items-center justify-between font-semibold mb-3">
-        <span>Total</span>
-        <span id="cartTotal">$ 0</span>
-      </div>
-      <button id="checkoutBtn" class="w-full rounded-xl bg-sky-600 text-white font-semibold px-5 py-3 hover:bg-sky-700">Finalizar por WhatsApp</button>
-    </div>
-  </div>
-  <div id="overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity z-40"></div>
-
-  <!-- Botón flotante WhatsApp -->
-  <a id="whatsappFloat" href="https://wa.me/573001112233" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-    ☎
-  </a>
-
-  <script>
-    const WHATSAPP_NUMBER = '573001112233'; // número Colombia
-
-    const PRODUCTS = [
-      { id:1,  title:'Auriculares Bluetooth ANC', category:'Audio', price:199900, compare_at:299900, image:'https://source.unsplash.com/800x600/?wireless,headphones' },
-      { id:2,  title:'Smartwatch Deportivo', category:'Bienestar', price:179900, compare_at:249900, image:'https://source.unsplash.com/800x600/?smartwatch,fitness' },
-      { id:3,  title:'Altavoz Bluetooth 30W', category:'Audio', price:149900, compare_at:219900, image:'https://source.unsplash.com/800x600/?bluetooth,speaker' },
-      { id:4,  title:'Lámpara RGB WiFi', category:'Casa Inteligente', price:59900, compare_at:89900, image:'https://source.unsplash.com/800x600/?smart,bulb' },
-      { id:5,  title:'Cámara WiFi 1080p', category:'Casa Inteligente', price:129900, compare_at:189900, image:'https://source.unsplash.com/800x600/?security,camera' },
-      { id:6,  title:'Teclado Mecánico RGB', category:'Gaming', price:229900, compare_at:319900, image:'https://source.unsplash.com/800x600/?mechanical,keyboard' },
-      { id:7,  title:'Proyector Portátil HD', category:'Casa Inteligente', price:499900, compare_at:699900, image:'https://source.unsplash.com/800x600/?projector,portable' },
-      { id:8,  title:'Ring Light 12"', category:'Accesorios', price:129900, compare_at:189900, image:'https://source.unsplash.com/800x600/?ringlight,studio' },
-    ];
-
-    const state = { cart:[] };
-    const grid = document.getElementById('grid');
-    function money(v){return v.toLocaleString('es-CO',{style:'currency',currency:'COP'})}
-
-    function renderProducts(){
-      grid.innerHTML = PRODUCTS.map(p => `
-        <article class="rounded-2xl border border-slate-200 bg-white overflow-hidden hover:shadow-md">
-          <div class="aspect-[4/3] bg-slate-100 overflow-hidden relative">
-            <img src="${p.image}" alt="${p.title}" class="h-full w-full object-cover"/>
-            <span class="absolute top-2 left-2 bg-emerald-600 text-white text-[10px] px-2 py-1 rounded-full">Pago contra entrega</span>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold">${p.title}</h3>
-            <p class="mt-1 text-xs text-slate-500">${p.category}</p>
-            <div class="mt-3 flex items-center gap-2">
-              <span class="text-lg font-extrabold">${money(p.price)}</span>
-              <span class="text-sm text-slate-400 line-through">${money(p.compare_at)}</span>
-            </div>
-            <button class="mt-4 w-full rounded-xl bg-sky-600 text-white px-4 py-2 text-sm font-semibold hover:bg-sky-700" onclick='addToCart(${JSON.stringify(p.id)})'>Agregar al carrito</button>
-          </div>
-        </article>
-      `).join('')
-    }
-
-    const cartDrawer=document.getElementById('cartDrawer');
-    const overlay=document.getElementById('overlay');
-    const cartItems=document.getElementById('cartItems');
-    const cartTotal=document.getElementById('cartTotal');
-    const cartCount=document.getElementById('cartCount');
-
-    function openCart(){cartDrawer.classList.remove('translate-x-full');overlay.classList.remove('pointer-events-none');overlay.classList.add('opacity-100')}
-    function closeCart(){cartDrawer.classList.add('translate-x-full');overlay.classList.add('pointer-events-none');overlay.classList.remove('opacity-100')}
-    document.getElementById('openCartBtn').onclick=openCart;
-    document.getElementById('closeCartBtn').onclick=closeCart;
-    overlay.onclick=closeCart;
-
-    function addToCart(id){
-      const p=PRODUCTS.find(x=>x.id===id);
-      const f=state.cart.find(i=>i.id===id);
-      if(f){f.qty++}else{state.cart.push({...p,qty:1})}
-      renderCart();openCart();
-    }
-
-    function removeFromCart(id){state.cart=state.cart.filter(i=>i.id!==id);renderCart()}
-    function changeQty(id,d){const it=state.cart.find(i=>i.id===id);if(!it)return;it.qty+=d;if(it.qty<=0){removeFromCart(id);return}renderCart()}
-    function getTotal(){return state.cart.reduce((s,i)=>s+i.price*i.qty,0)}
-
-    function renderCart(){
-      cartItems.innerHTML=state.cart.length?state.cart.map(i=>`
-        <div class="flex gap-3">
-          <img src="${i.image}" class="h-16 w-16 rounded-lg object-cover border"/>
-          <div class="flex-1">
-            <div class="flex justify-between">
-              <p class="font-semibold">${i.title}</p>
-              <button onclick="removeFromCart(${i.id})">✕</button>
-            </div>
-            <div class="mt-2 flex justify-between items-center">
-              <div class="flex gap-2 items-center">
-                <button onclick="changeQty(${i.id},-1)" class="border px-2">-</button>
-                <span>${i.qty}</span>
-                <button onclick="changeQty(${i.id},1)" class="border px-2">+</button>
-              </div>
-              <div>${money(i.price*i.qty)}</div>
-            </div>
-          </div>
-        </div>`).join(''):'<p class="text-sm text-slate-600">Carrito vacío</p>';
-      cartTotal.textContent=money(getTotal());
-      cartCount.textContent=state.cart.reduce((s,i)=>s+i.qty,0);
-    }
-
-    document.getElementById('checkoutBtn').onclick=function(){
-      if(!state.cart.length){openCart();return}
-      const lines=state.cart.map(i=>`• ${i.title} x${i.qty} — ${money(i.price*i.qty)}`).join('%0A');
-      const total=money(getTotal());
-      const msg=encodeURIComponent(`¡Hola! Quiero finalizar mi pedido:%0A${lines}%0A%0ATotal: ${total}`);
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,'_blank');
-    }
-
-    document.getElementById('year').textContent=new Date().getFullYear();
-    renderProducts();
-    renderCart();
-  </script>
 </body>
-</html>
+</html>            
